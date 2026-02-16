@@ -1,0 +1,360 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 840" font-family="Consolas, monospace" font-size="11">
+  <style>
+    .pin-label { font-size: 11px; fill: #333; }
+    .pin-label-left { text-anchor: end; }
+    .pin-label-right { text-anchor: start; }
+    .board-label { font-size: 14px; font-weight: bold; fill: #fff; text-anchor: middle; }
+    .sub-label { font-size: 10px; fill: #ccc; text-anchor: middle; }
+    .pin-func { font-size: 9px; fill: #888; }
+    .pin-func-left { text-anchor: end; }
+    .pin-func-right { text-anchor: start; }
+    .wire-gnd { stroke: #222; stroke-width: 2.5; fill: none; }
+    .wire-12v { stroke: #cc3333; stroke-width: 2.5; fill: none; }
+    .wire-pwm { stroke: #2277dd; stroke-width: 2.5; fill: none; }
+    .wire-tacho { stroke: #ee9922; stroke-width: 2.5; fill: none; }
+    .wire-vcc { stroke: #cc3333; stroke-width: 2.5; fill: none; stroke-dasharray: 6,3; }
+    .wire-btn { stroke: #22aa66; stroke-width: 2.5; fill: none; }
+    .title-text { font-size: 18px; font-weight: bold; fill: #333; text-anchor: middle; }
+    .subtitle-text { font-size: 12px; fill: #666; text-anchor: middle; }
+  </style>
+
+  <!-- Title -->
+  <text x="410" y="30" class="title-text">Arduino Pro Mini — PWM Fan + Speed Button</text>
+  <text x="410" y="48" class="subtitle-text">D9: PWM out · D2: Tacho in (INT0) · D3: Button in (INT1, internal pull-up) · 10% duty cycle steps</text>
+
+  <!-- ============================================= -->
+  <!-- ARDUINO PRO MINI BOARD -->
+  <!-- ============================================= -->
+  <rect x="170" y="120" width="180" height="500" rx="8" ry="8" fill="#1a6b4a" stroke="#0d4a32" stroke-width="2"/>
+  <rect x="180" y="130" width="160" height="480" rx="4" ry="4" fill="none" stroke="#2a8b6a" stroke-width="0.5" stroke-dasharray="4,3"/>
+
+  <!-- ATmega328P chip -->
+  <rect x="220" y="300" width="80" height="80" rx="3" ry="3" fill="#222" stroke="#444" stroke-width="1"/>
+  <circle cx="240" cy="318" r="4" fill="none" stroke="#666" stroke-width="0.5"/>
+  <text x="260" y="345" text-anchor="middle" font-size="8" fill="#999">ATmega</text>
+  <text x="260" y="356" text-anchor="middle" font-size="8" fill="#999">328P</text>
+
+  <!-- Crystal -->
+  <rect x="240" y="400" width="40" height="14" rx="2" ry="2" fill="#ccc" stroke="#999" stroke-width="0.5"/>
+  <text x="260" y="410" text-anchor="middle" font-size="7" fill="#555">16MHz</text>
+
+  <!-- Reset button -->
+  <rect x="243" y="230" width="34" height="18" rx="3" ry="3" fill="#444" stroke="#333" stroke-width="1"/>
+  <text x="260" y="243" text-anchor="middle" font-size="7" fill="#ccc">RST</text>
+
+  <!-- Board title -->
+  <text x="260" y="160" class="board-label">ARDUINO</text>
+  <text x="260" y="178" class="board-label">PRO MINI</text>
+  <text x="260" y="195" class="sub-label">ATmega328P</text>
+
+  <!-- ======================= -->
+  <!-- LEFT SIDE PINS -->
+  <!-- ======================= -->
+
+  <!-- TXO -->
+  <circle cx="170" cy="210" r="5" fill="#c9a800" stroke="#a08600" stroke-width="1" opacity="0.4"/>
+  <text x="155" y="213" class="pin-label pin-label-left" opacity="0.4">TXO</text>
+
+  <!-- RXI -->
+  <circle cx="170" cy="240" r="5" fill="#c9a800" stroke="#a08600" stroke-width="1" opacity="0.4"/>
+  <text x="155" y="243" class="pin-label pin-label-left" opacity="0.4">RXI</text>
+
+  <!-- RST -->
+  <circle cx="170" cy="270" r="5" fill="#cc5555" stroke="#aa3333" stroke-width="1" opacity="0.4"/>
+  <text x="155" y="273" class="pin-label pin-label-left" opacity="0.4">RST</text>
+
+  <!-- GND — ACTIVE -->
+  <circle cx="170" cy="300" r="7" fill="#222" stroke="#ffcc00" stroke-width="2"/>
+  <text x="155" y="303" class="pin-label pin-label-left" font-weight="bold">GND</text>
+
+  <!-- D2 — ACTIVE: tacho input + pull-up junction -->
+  <circle cx="170" cy="330" r="7" fill="#ee9922" stroke="#cc7700" stroke-width="2"/>
+  <text x="155" y="333" class="pin-label pin-label-left" font-weight="bold">2</text>
+  <text x="95" y="333" class="pin-func pin-func-left" font-weight="bold">INT0 / TACHO</text>
+
+  <!-- D3 — ACTIVE: button input -->
+  <circle cx="170" cy="360" r="7" fill="#22aa66" stroke="#118844" stroke-width="2"/>
+  <text x="155" y="363" class="pin-label pin-label-left" font-weight="bold">3</text>
+  <text x="95" y="363" class="pin-func pin-func-left" font-weight="bold">INT1 / BUTTON</text>
+
+  <!-- D4 -->
+  <circle cx="170" cy="390" r="5" fill="#5588cc" stroke="#3366aa" stroke-width="1" opacity="0.4"/>
+  <text x="155" y="393" class="pin-label pin-label-left" opacity="0.4">4</text>
+
+  <!-- D5 -->
+  <circle cx="170" cy="420" r="5" fill="#5588cc" stroke="#3366aa" stroke-width="1" opacity="0.4"/>
+  <text x="155" y="423" class="pin-label pin-label-left" opacity="0.4">5</text>
+
+  <!-- D6 -->
+  <circle cx="170" cy="450" r="5" fill="#5588cc" stroke="#3366aa" stroke-width="1" opacity="0.4"/>
+  <text x="155" y="453" class="pin-label pin-label-left" opacity="0.4">6</text>
+
+  <!-- D7 -->
+  <circle cx="170" cy="480" r="5" fill="#5588cc" stroke="#3366aa" stroke-width="1" opacity="0.4"/>
+  <text x="155" y="483" class="pin-label pin-label-left" opacity="0.4">7</text>
+
+  <!-- D8 -->
+  <circle cx="170" cy="510" r="5" fill="#5588cc" stroke="#3366aa" stroke-width="1" opacity="0.4"/>
+  <text x="155" y="513" class="pin-label pin-label-left" opacity="0.4">8</text>
+
+  <!-- D9 — ACTIVE: PWM output -->
+  <circle cx="170" cy="540" r="7" fill="#2277dd" stroke="#0055bb" stroke-width="2"/>
+  <text x="155" y="543" class="pin-label pin-label-left" font-weight="bold">9</text>
+  <text x="105" y="543" class="pin-func pin-func-left" font-weight="bold">PWM OUT</text>
+
+  <!-- D10 -->
+  <circle cx="170" cy="570" r="5" fill="#5588cc" stroke="#3366aa" stroke-width="1" opacity="0.4"/>
+  <text x="155" y="573" class="pin-label pin-label-left" opacity="0.4">10</text>
+
+  <!-- ======================= -->
+  <!-- RIGHT SIDE PINS -->
+  <!-- ======================= -->
+
+  <!-- RAW -->
+  <circle cx="350" cy="210" r="5" fill="#cc3333" stroke="#aa1111" stroke-width="1" opacity="0.4"/>
+  <text x="365" y="213" class="pin-label pin-label-right" opacity="0.4">RAW</text>
+
+  <!-- GND -->
+  <circle cx="350" cy="240" r="5" fill="#333" stroke="#555" stroke-width="1" opacity="0.4"/>
+  <text x="365" y="243" class="pin-label pin-label-right" opacity="0.4">GND</text>
+
+  <!-- RST -->
+  <circle cx="350" cy="270" r="5" fill="#cc5555" stroke="#aa3333" stroke-width="1" opacity="0.4"/>
+  <text x="365" y="273" class="pin-label pin-label-right" opacity="0.4">RST</text>
+
+  <!-- VCC — ACTIVE -->
+  <circle cx="350" cy="300" r="7" fill="#cc3333" stroke="#ffcc00" stroke-width="2"/>
+  <text x="365" y="303" class="pin-label pin-label-right" font-weight="bold">VCC</text>
+  <text x="400" y="303" class="pin-func pin-func-right">5V</text>
+
+  <!-- A3 -->
+  <circle cx="350" cy="330" r="5" fill="#44aa44" stroke="#228822" stroke-width="1" opacity="0.4"/>
+  <text x="365" y="333" class="pin-label pin-label-right" opacity="0.4">A3</text>
+
+  <!-- A2 -->
+  <circle cx="350" cy="360" r="5" fill="#44aa44" stroke="#228822" stroke-width="1" opacity="0.4"/>
+  <text x="365" y="363" class="pin-label pin-label-right" opacity="0.4">A2</text>
+
+  <!-- A1 -->
+  <circle cx="350" cy="390" r="5" fill="#44aa44" stroke="#228822" stroke-width="1" opacity="0.4"/>
+  <text x="365" y="393" class="pin-label pin-label-right" opacity="0.4">A1</text>
+
+  <!-- A0 -->
+  <circle cx="350" cy="420" r="5" fill="#44aa44" stroke="#228822" stroke-width="1" opacity="0.4"/>
+  <text x="365" y="423" class="pin-label pin-label-right" opacity="0.4">A0</text>
+
+  <!-- D13 -->
+  <circle cx="350" cy="450" r="5" fill="#5588cc" stroke="#3366aa" stroke-width="1" opacity="0.4"/>
+  <text x="365" y="453" class="pin-label pin-label-right" opacity="0.4">13</text>
+
+  <!-- ============================================= -->
+  <!-- 12V POWER SUPPLY -->
+  <!-- ============================================= -->
+  <rect x="555" y="100" width="120" height="80" rx="6" ry="6" fill="#444" stroke="#333" stroke-width="2"/>
+  <text x="615" y="130" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">12V DC</text>
+  <text x="615" y="148" text-anchor="middle" font-size="10" fill="#ccc">Power Supply</text>
+  <text x="615" y="165" text-anchor="middle" font-size="9" fill="#aaa">(ATX / Adapter)</text>
+
+  <circle cx="590" cy="180" r="5" fill="#cc3333" stroke="#aa1111" stroke-width="1.5"/>
+  <text x="590" y="200" text-anchor="middle" font-size="9" fill="#cc3333" font-weight="bold">+12V</text>
+  <circle cx="640" cy="180" r="5" fill="#222" stroke="#666" stroke-width="1.5"/>
+  <text x="640" y="200" text-anchor="middle" font-size="9" fill="#333" font-weight="bold">GND</text>
+
+  <!-- ============================================= -->
+  <!-- 4-PIN PC FAN -->
+  <!-- ============================================= -->
+  <rect x="540" y="340" width="250" height="200" rx="10" ry="10" fill="#e8e8e8" stroke="#aaa" stroke-width="2"/>
+
+  <circle cx="665" cy="430" r="70" fill="none" stroke="#ccc" stroke-width="2"/>
+  <circle cx="665" cy="430" r="8" fill="#999" stroke="#777" stroke-width="1"/>
+
+  <g transform="rotate(15, 665, 430)" opacity="0.3">
+    <path d="M665,430 Q700,390 665,360" stroke="#888" stroke-width="2" fill="#ddd"/>
+    <path d="M665,430 Q700,470 665,500" stroke="#888" stroke-width="2" fill="#ddd"/>
+    <path d="M665,430 Q630,390 665,360" stroke="#888" stroke-width="2" fill="#ddd"/>
+    <path d="M665,430 Q630,470 665,500" stroke="#888" stroke-width="2" fill="#ddd"/>
+    <path d="M665,430 Q705,430 735,430" stroke="#888" stroke-width="2" fill="#ddd"/>
+    <path d="M665,430 Q625,430 595,430" stroke="#888" stroke-width="2" fill="#ddd"/>
+  </g>
+
+  <text x="665" y="430" text-anchor="middle" font-size="12" font-weight="bold" fill="#777">FAN</text>
+  <text x="665" y="445" text-anchor="middle" font-size="9" fill="#999">4-pin PWM</text>
+
+  <!-- Fan connector pins -->
+  <circle cx="540" cy="380" r="6" fill="#222" stroke="#ffcc00" stroke-width="2"/>
+  <text x="550" y="372" font-size="9" fill="#555">①</text>
+  <circle cx="540" cy="410" r="6" fill="#cc3333" stroke="#ffcc00" stroke-width="2"/>
+  <text x="550" y="402" font-size="9" fill="#555">②</text>
+  <circle cx="540" cy="440" r="6" fill="#ee9922" stroke="#cc7700" stroke-width="2"/>
+  <text x="550" y="432" font-size="9" fill="#555">③</text>
+  <circle cx="540" cy="470" r="6" fill="#2277dd" stroke="#0055bb" stroke-width="2"/>
+  <text x="550" y="462" font-size="9" fill="#555">④</text>
+
+  <text x="560" y="383" font-size="10" fill="#333" font-weight="bold">GND</text>
+  <text x="560" y="413" font-size="10" fill="#cc3333" font-weight="bold">+12V</text>
+  <text x="560" y="443" font-size="10" fill="#ee9922" font-weight="bold">TACHO</text>
+  <text x="560" y="473" font-size="10" fill="#2277dd" font-weight="bold">PWM</text>
+
+  <!-- ============================================= -->
+  <!-- TACTILE BUTTON -->
+  <!-- ============================================= -->
+  <rect x="42" y="385" width="52" height="42" rx="4" ry="4" fill="#555" stroke="#333" stroke-width="2"/>
+  <rect x="52" y="392" width="32" height="28" rx="8" ry="8" fill="#888" stroke="#666" stroke-width="1"/>
+  <circle cx="68" cy="406" r="8" fill="#999" stroke="#aaa" stroke-width="0.5"/>
+
+  <circle cx="48" cy="385" r="3.5" fill="#ccc" stroke="#999" stroke-width="1"/>
+  <circle cx="88" cy="385" r="3.5" fill="#ccc" stroke="#999" stroke-width="1"/>
+  <circle cx="48" cy="427" r="3.5" fill="#ccc" stroke="#999" stroke-width="1"/>
+  <circle cx="88" cy="427" r="3.5" fill="#ccc" stroke="#999" stroke-width="1"/>
+
+  <text x="68" y="375" text-anchor="middle" font-size="11" fill="#333" font-weight="bold">SPEED</text>
+  <text x="68" y="455" text-anchor="middle" font-size="9" fill="#888">Tactile Switch</text>
+  <text x="68" y="467" text-anchor="middle" font-size="9" fill="#888">N.O. momentary</text>
+
+  <!-- ============================================= -->
+  <!-- PULL-UP RESISTOR — clearly at the D2 node    -->
+  <!-- Oriented VERTICALLY between VCC and D2        -->
+  <!-- ============================================= -->
+
+  <!-- Resistor positioned vertically above D2 pin -->
+  <!-- VCC runs across the top, drops down through R1, lands on the D2 wire -->
+
+  <!-- Resistor body (vertical) -->
+  <rect x="133" y="255" width="16" height="50" rx="3" ry="3" fill="#f5e6c8" stroke="#c9a54e" stroke-width="1.5"/>
+  <!-- Color bands (horizontal on vertical resistor) -->
+  <rect x="133" y="264" width="16" height="4" fill="#8B4513" rx="0.5"/>
+  <rect x="133" y="272" width="16" height="4" fill="#000" rx="0.5"/>
+  <rect x="133" y="280" width="16" height="4" fill="#ff0000" rx="0.5"/>
+  <rect x="133" y="292" width="16" height="4" fill="#FFD700" rx="0.5"/>
+
+  <!-- R1 label -->
+  <text x="120" y="282" text-anchor="end" font-size="10" fill="#555" font-weight="bold">R1</text>
+  <text x="120" y="294" text-anchor="end" font-size="9" fill="#888">10 kΩ</text>
+
+  <!-- === VCC to top of R1 (dashed red) === -->
+  <!-- VCC pin (350,300) → left across top → down to resistor top -->
+  <path d="M350,300 L400,300 L400,240 L141,240 L141,255"
+        class="wire-vcc" stroke-linejoin="round"/>
+
+  <!-- VCC label on wire -->
+  <text x="400" y="233" text-anchor="middle" font-size="9" fill="#cc3333" font-weight="bold">VCC (5V)</text>
+
+  <!-- === Bottom of R1 connects to D2 junction node === -->
+  <!-- R1 bottom (141,305) → junction dot → D2 pin (170,330) -->
+  <line x1="141" y1="305" x2="141" y2="330" stroke="#ee9922" stroke-width="2.5"/>
+  <line x1="141" y1="330" x2="170" y2="330" stroke="#ee9922" stroke-width="2.5"/>
+
+  <!-- JUNCTION DOT at D2/R1/Tacho meeting point -->
+  <circle cx="141" cy="330" r="4.5" fill="#ee9922" stroke="#cc7700" stroke-width="1"/>
+
+  <!-- Small callout for the junction -->
+  <text x="141" y="348" text-anchor="middle" font-size="8" fill="#cc7700" font-weight="bold">junction</text>
+
+  <!-- ============================================= -->
+  <!-- WIRING -->
+  <!-- ============================================= -->
+
+  <!-- === GND bus === -->
+  <line x1="48" y1="710" x2="640" y2="710" class="wire-gnd"/>
+  <!-- Arduino GND down to bus -->
+  <path d="M170,300 L110,300 L110,710" class="wire-gnd" stroke-linejoin="round"/>
+  <!-- Fan GND down to bus -->
+  <path d="M540,380 L520,380 L520,710" class="wire-gnd" stroke-linejoin="round"/>
+  <!-- PSU GND down to bus -->
+  <path d="M640,180 L640,710" class="wire-gnd" stroke-linejoin="round"/>
+  <!-- Button GND to bus -->
+  <path d="M48,427 L48,710" class="wire-gnd" stroke-linejoin="round"/>
+
+  <!-- GND junction dots -->
+  <circle cx="110" cy="710" r="4" fill="#222"/>
+  <circle cx="520" cy="710" r="4" fill="#222"/>
+  <circle cx="640" cy="710" r="4" fill="#222"/>
+  <circle cx="48" cy="710" r="4" fill="#222"/>
+
+  <!-- GND bus label -->
+  <text x="340" y="728" text-anchor="middle" font-size="10" fill="#333" font-weight="bold">GND bus (common ground — Arduino, PSU, Fan, Button)</text>
+
+  <!-- === +12V — PSU to Fan === -->
+  <path d="M590,180 L590,260 L505,260 L505,410 L540,410" class="wire-12v" stroke-linejoin="round"/>
+
+  <!-- === PWM — Arduino D9 to Fan Pin 4 === -->
+  <path d="M170,540 L100,540 L100,690 L510,690 L510,470 L540,470" class="wire-pwm" stroke-linejoin="round"/>
+
+  <!-- === TACHO — Fan Pin 3 → junction at D2 === -->
+  <path d="M540,440 L460,440 L460,330 L141,330" class="wire-tacho" stroke-linejoin="round"/>
+  <!-- Junction dot (tacho arrives at same junction as R1 bottom and D2) -->
+
+  <!-- === BUTTON — D3 to button === -->
+  <path d="M170,360 L88,360 L88,385" class="wire-btn" stroke-linejoin="round"/>
+
+  <!-- Button internal pull-up annotation -->
+  <text x="130" y="368" text-anchor="middle" font-size="8" fill="#22aa66">internal pull-up</text>
+
+  <!-- ============================================= -->
+  <!-- WIRE LABELS -->
+  <!-- ============================================= -->
+
+  <rect x="250" y="680" width="80" height="16" rx="3" fill="#2277dd" opacity="0.15"/>
+  <text x="290" y="692" text-anchor="middle" font-size="9" fill="#2277dd" font-weight="bold">PWM → D9</text>
+
+  <rect x="500" y="248" width="60" height="16" rx="3" fill="#cc3333" opacity="0.15"/>
+  <text x="530" y="260" text-anchor="middle" font-size="9" fill="#cc3333" font-weight="bold">+12V</text>
+
+  <rect x="280" y="318" width="100" height="16" rx="3" fill="#ee9922" opacity="0.15"/>
+  <text x="330" y="330" text-anchor="middle" font-size="9" fill="#cc7700" font-weight="bold">TACHO → D2</text>
+
+  <!-- ============================================= -->
+  <!-- DUTY CYCLE INDICATOR -->
+  <!-- ============================================= -->
+  <rect x="420" y="650" width="370" height="46" rx="6" ry="6" fill="#f0f8ff" stroke="#b0c8e8" stroke-width="1"/>
+  <text x="605" y="668" text-anchor="middle" font-size="10" fill="#336" font-weight="bold">Duty Cycle Steps (button press cycles through)</text>
+
+  <g transform="translate(432, 676)">
+    <rect x="0"   y="0" width="32" height="14" rx="2" fill="#d4e8ff" stroke="#88b0dd" stroke-width="0.5"/>
+    <text x="16"  y="11" text-anchor="middle" font-size="8" fill="#336">10%</text>
+    <rect x="34"  y="0" width="32" height="14" rx="2" fill="#b8d8ff" stroke="#88b0dd" stroke-width="0.5"/>
+    <text x="50"  y="11" text-anchor="middle" font-size="8" fill="#336">20%</text>
+    <rect x="68"  y="0" width="32" height="14" rx="2" fill="#9cc8ff" stroke="#88b0dd" stroke-width="0.5"/>
+    <text x="84"  y="11" text-anchor="middle" font-size="8" fill="#336">30%</text>
+    <rect x="102" y="0" width="32" height="14" rx="2" fill="#80b8ff" stroke="#88b0dd" stroke-width="0.5"/>
+    <text x="118" y="11" text-anchor="middle" font-size="8" fill="#336">40%</text>
+    <rect x="136" y="0" width="32" height="14" rx="2" fill="#66aaff" stroke="#88b0dd" stroke-width="0.5"/>
+    <text x="152" y="11" text-anchor="middle" font-size="8" fill="#336">50%</text>
+    <rect x="170" y="0" width="32" height="14" rx="2" fill="#4d99ff" stroke="#88b0dd" stroke-width="0.5"/>
+    <text x="186" y="11" text-anchor="middle" font-size="8" fill="#336">60%</text>
+    <rect x="204" y="0" width="32" height="14" rx="2" fill="#3388ff" stroke="#88b0dd" stroke-width="0.5"/>
+    <text x="220" y="11" text-anchor="middle" font-size="8" fill="#336">70%</text>
+    <rect x="238" y="0" width="32" height="14" rx="2" fill="#1a77ff" stroke="#88b0dd" stroke-width="0.5"/>
+    <text x="254" y="11" text-anchor="middle" font-size="8" fill="#fff">80%</text>
+    <rect x="272" y="0" width="32" height="14" rx="2" fill="#0066ee" stroke="#88b0dd" stroke-width="0.5"/>
+    <text x="288" y="11" text-anchor="middle" font-size="8" fill="#fff">90%</text>
+    <rect x="306" y="0" width="32" height="14" rx="2" fill="#0055cc" stroke="#88b0dd" stroke-width="0.5"/>
+    <text x="322" y="11" text-anchor="middle" font-size="8" fill="#fff">100%</text>
+  </g>
+
+  <!-- ============================================= -->
+  <!-- LEGEND -->
+  <!-- ============================================= -->
+  <rect x="10" y="748" width="800" height="80" rx="6" ry="6" fill="#fafafa" stroke="#ddd" stroke-width="1"/>
+
+  <line x1="20" y1="768" x2="45" y2="768" class="wire-gnd"/>
+  <text x="50" y="772" font-size="10" fill="#555">GND</text>
+
+  <line x1="105" y1="768" x2="130" y2="768" class="wire-12v"/>
+  <text x="135" y="772" font-size="10" fill="#555">+12V (PSU→Fan)</text>
+
+  <line x1="270" y1="768" x2="295" y2="768" class="wire-pwm"/>
+  <text x="300" y="772" font-size="10" fill="#555">PWM (D9→Fan)</text>
+
+  <line x1="425" y1="768" x2="450" y2="768" class="wire-tacho"/>
+  <text x="455" y="772" font-size="10" fill="#555">Tacho (Fan→D2)</text>
+
+  <line x1="575" y1="768" x2="600" y2="768" class="wire-btn"/>
+  <text x="605" y="772" font-size="10" fill="#555">Button (D3)</text>
+
+  <line x1="695" y1="768" x2="720" y2="768" class="wire-vcc"/>
+  <text x="725" y="772" font-size="10" fill="#555">VCC pull-up</text>
+
+  <text x="20" y="800" font-size="9" fill="#888">⚠ Fan 12V from external PSU only — never through Arduino.   Button uses INPUT_PULLUP — no external resistor needed.</text>
+  <text x="20" y="814" font-size="9" fill="#888">⚠ Timer1 on D9 → 25 kHz PWM.   Tacho open-drain needs 10 kΩ to VCC.   2 pulses/rev.   Debounce 200 ms.   Cycle: 10%→20%→…→100%→10%.</text>
+</svg>
